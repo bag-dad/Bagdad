@@ -1,22 +1,27 @@
 <?php
-/**
- * Helpers for the template file.
- */
+//
+// Helpers for the template file.
+//
 
-/**
- * Add static entries in the template file. 
- */
-$ly->data['header'] = '<h1>Header: Bagdad</h1>';
-$ly->data['footer'] = <<<EOD
-<p>Footer: &copy;</p>
+//
+// Add static entries for use in the template file.
+//
+$ba->data['header'] = 'Bagdad';
+$ba->data['slogan'] = 'A PHP-based MVC-inspired CMF';
+$ba->data['favicon'] = theme_url('logo_80x80.png');
+$ba->data['logo'] = theme_url('logo_80x80.png');
+$ba->data['logo_width'] = 80;
+$ba->data['logo_height'] = 80;
+$ba->data['footer'] = <<<EOD
 
-<p>Tools: 
+
+<p>Tools:
 <a href="http://validator.w3.org/check/referer">html5</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">css3</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css21">css21</a>
 <a href="http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance">unicorn</a>
-<a href="http://validator.w3.org/checklink?uri={$ly->request->current_url}">links</a>
-<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={$ly->request->current_url}">i18n</a>
+<a href="http://validator.w3.org/checklink?uri={$ba->request->current_url}">links</a>
+<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={$ba->request->current_url}">i18n</a>
 <!-- <a href="link?">http-header</a> -->
 <a href="http://csslint.net/">css-lint</a>
 <a href="http://jslint.com/">js-lint</a>
@@ -36,3 +41,5 @@ $ly->data['footer'] = <<<EOD
 </p>
 
 EOD;
+
+

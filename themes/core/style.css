@@ -1,6 +1,10 @@
-/* Description: Core theme for Lydia ---------------------------------------- */
+/**
+* Description: Core theme for Lydia
+*/
 
-/* Structure -------------------- */
+/**
+* Structure
+*/
 html{background-color:#eee;}
 body{margin:0;padding:0;color:#333;background-color:#fff;
   font: 1em Verdana, Arial, Helvetica, sans-serif;}
@@ -21,7 +25,19 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 #footer {font-size:0.80em;color:#666;background-color:#eee;}
 
 
-/* Banner -------------------- */
+/**
+* Login menu
+*/
+#login-menu{float:right;font-size:smaller;}
+#login-menu img.gravatar{vertical-align:middle;}
+#login-menu a{text-decoration:none;}
+#login-menu a:hover{text-decoration:underline;}
+
+
+
+/**
+* Banner
+*/
 #banner {display:table;margin-bottom:10px;}
 
 .site-logo,
@@ -35,8 +51,13 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 .site-title {font-size:4em;font-weight:bold;}
 .site-slogan {font-size:1.5em;}
 
+.site-title a {text-decoration:none;color:inherit;}
+.site-title a:hover {text-decoration:none;color:inherit;}
 
-/* Links -------------------- */
+
+/**
+* Links
+*/
 a {color:inherit;}
 a:link {}
 a:visited {}
@@ -45,12 +66,30 @@ a:focus {text-decoration:none;color:#5C0A0A;}
 a:active {}
 
 
-/* Headings -------------------- */
+/**
+* Headings
+*/
 h1{border-bottom:3px double #ccc;padding-bottom:4px;}
 h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
 
 
-/* User feedback message wrappers -------------------- */
+/**
+* Forms
+*/
+input,textarea{font:inherit;}
+input[readonly]{color:#666;}
+label{font-size:smaller;}
+.validation-failed{border:2px solid red;}
+.validation-message{color:red;font-size:smaller;}
+.form-action-link{font-size:smaller;}
+
+.content-edit input[type=text]{width:30em;}
+.content-edit textarea{width:40em;height:15em;}
+
+
+/**
+* User feedback message wrappers.
+*/
 .error, .alert, .warning, .notice, .success, .info {
 padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 
@@ -64,12 +103,8 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 .info a { color: #205791; }
 
 
-/* Misc -------------------- */
-
 /**
-* Login menu
+* Misc
 */
-#login-menu{float:right;font-size:smaller;}
-#login-menu img.gravatar{vertical-align:middle;}
-#login-menu a{text-decoration:none;}
-#login-menu a:hover{text-decoration:underline;}
+.smaller-text{font-size:smaller;}
+.silent{color:#999;}

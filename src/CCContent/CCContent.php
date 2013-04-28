@@ -2,7 +2,7 @@
 /**
 * A user controller to manage content.
 *
-* @package LydiaCore
+* @package BagdadCore
 */
 class CCContent extends CObject implements IController {
 

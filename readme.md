@@ -46,9 +46,10 @@ Here are some useful tips to get you started.
 
 Let's introduce ourselves to the config file, located in the /site folder. Here you can change things as the page title, the navbar, which stylesheet to use, disable debug messages and so on...
 
-To change the page title simply locate 'header' => 'Bagdad', at the end of the file and change it to your liking, the same method is applicable for changing the slogan etc.
+To change the page title simply locate 'header' => 'Bagdad', at the end of the file and change it to your liking, the same method is applicable for changing the slogan, the footer etc.
 
-To customimze the .css to your liking go to site/themes/mytheme and start messing with the style.css.
+To customimze the .css to your liking go to site/themes/mytheme and start messing with the style.css. You should not touch the @import unless
+you are comfortable with css.
 
 If you're not a blog-dude and don't like to post pictures of yourself doing the "duckface", you could remove this from your navbar. 
 

@@ -29,6 +29,8 @@ This can be achieved by the following commando:
 
     cd Bagdad; chmod 777 site/data
 
+You might have to make the database file .ht.sqlite writeable with chmod 666 aswell.
+
 Initiating the Bagdad modules
 
 You should now be able to view the MVC in your browser, before doing anything else you should initiate the modules. Do this by pointing your browser to /module/install.

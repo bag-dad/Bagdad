@@ -61,7 +61,7 @@ To create a to create a page about yourself simply go to /content and choose 'cr
 When creating new content you should use page as type and htmlpurify or bbcode as filter.
 Once you are satisfied with your new page you might want to link it to the "About me" button in the navbar.
 Do this by going to the config file and look for the my-navbar array, then swap the 'home' url to the url of the content
-which you just created.
+which you just created. 'page/view/number' for example.
 
 If you're lazy and don't want to mess arround with the config file, you could just edit the content of the 'About page'.
 

@@ -56,5 +56,15 @@ This can be achieved by locating $ba->config['menus'] and modify it to your liki
 
 If you wishh to change the sites logo, go to site/themes/mytheme. Once you're done importing your logo, make sure it's specified in the config file.
 
+To create a to create a page about yourself simply go to /content and choose 'create content' under the 'Actions'.
+When creating new content you should use page as type and htmlpurify or bbcode as filter.
+Once you are satisfied with your new page you might want to link it to the "About me" button in the navbar.
+Do this by going to the config file and look for the my-navbar array, then swap the 'home' url to the url of the content
+which you just created.
+
+If you're lazy and don't want to mess arround with the config file, you could just edit the content of the 'About page'.
+
+Same procedure is applicable for creating new blog-posts except you should spec. type as post.
+
 
 

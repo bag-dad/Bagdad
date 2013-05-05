@@ -4,7 +4,7 @@
 <h2>Download</h2>
 <p>You can download Bagdad from github.</p>
 <blockquote>
-<code>git clone https://github.com/bag-dad/kmom07.git</code>
+<code>git clone https://github.com/bag-dad/Bagdad.git</code>
 </blockquote>
 
 

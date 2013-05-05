@@ -6,16 +6,19 @@
 ░░█░░░█░░█░░░░█░░█░░░░█░░█░░░░█░░█░░░░█░░█░░░░█░░
 ░░█░░░█░░█░░░░█░░█░░░░█░░█░░░█░░░█░░░░█░░█░░░█░░░
 ░░████░░░█░░░░█░░░████░░░████░░░░█░░░░█░░████░░░░
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ A PHP based MVC
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+<h1>A PHP based MVC</h1>
+
 Shout-out to DB-webb & Lydia
 
-Downloading Bagdad
+<h3>Downloading Bagdad</h3>
 
 Bagdad is available on github. You can either download Bagdad trough https://github.com/bag-dad/Bagdad or clone the project using the git bash.
 
     git clone git://github.com/bag-dad/Bagdad.git
 
-Installing / initiating Bagdad
+<h3>Installing / initiating Bagdad</h3>
 
 First off you'll have to open up the .htaccess file located in Bagdads root folder. 
 You will find something like this:
@@ -31,7 +34,7 @@ This can be achieved by the following commando:
 
 You might have to make the database file .ht.sqlite writeable with chmod 666 aswell.
 
-Initiating the Bagdad modules
+<h3>Initiating the Bagdad modules</h3>
 
 You should now be able to view the MVC in your browser, before doing anything else you should initiate the modules. Do this by pointing your browser to /module/install.
 The modules should now be fully functional and ready to use. 

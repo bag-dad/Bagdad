@@ -1,22 +1,22 @@
 <?php
 /**
-* A model for managing Lydia modules.
-*
-* @package LydiaCore
-*/
+ * A model for managing Lydia modules.
+ *
+ * @package BagdadCore
+ */
 class CMModules extends CObject {
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct() { parent::__construct(); }
 
 
-  /**
-* A list of all available controllers/methods
-*
-* @returns array list of controllers (key) and an array of methods
-*/
+/**
+ * A list of all available controllers/methods
+ *
+ * @returns array list of controllers (key) and an array of methods
+ */
   public function AvailableControllers() {	
     $controllers = array();
     foreach($this->config['controllers'] as $key => $val) {
@@ -38,12 +38,12 @@ class CMModules extends CObject {
   }
 
 
-  /**
-* Read and analyse all modules.
-*
-* @returns array with a entry for each module with the module name as the key.
-* Returns boolean false if $src can not be opened.
-*/
+/**
+ * Read and analyse all modules.
+ *
+ * @returns array with a entry for each module with the module name as the key.
+ * Returns boolean false if $src can not be opened.
+ */
   public function ReadAndAnalyse() {
     $src = BAGDAD_INSTALL_PATH.'/src';
     if(!$dir = dir($src)) throw new Exception('Could not open the directory.');
@@ -69,11 +69,11 @@ class CMModules extends CObject {
   }
   
 
-  /**
-* Install all modules.
-*
-* @returns array with a entry for each module and the result from installing it.
-*/
+/**
+ * Install all modules.
+ *
+ * @returns array with an entry for each module and the result from installing it.
+ */
   public function Install() {
     $allModules = $this->ReadAndAnalyse();
     uksort($allModules, function($a, $b) {

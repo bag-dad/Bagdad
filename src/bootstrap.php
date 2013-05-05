@@ -1,13 +1,13 @@
 <?php
 /**
-* Bootstrapping, setting up and loading the core.
-*
-* @package LydiaCore
-*/
+ * Bootstrapping, setting up and loading the core.
+ *
+ * @package BagdadCore
+ */
 
 /**
-* Enable auto-load of class declarations.
-*/
+ * Enable auto-load of class declarations.
+ */
 function autoload($aClassName) {
   $classFile = "/src/{$aClassName}/{$aClassName}.php";
 $file1 = BAGDAD_SITE_PATH . $classFile;
@@ -22,8 +22,8 @@ spl_autoload_register('autoload');
 
 
 /**
-* Set a default exception handler and enable logging in it.
-*/
+ * Set a default exception handler and enable logging in it.
+ */
 function exceptionHandler($e) {
   echo "Bagdad: Uncaught exception: <p>" . $e->getMessage() . "</p><pre>" . $e->getTraceAsString(), "</pre>";
 }
@@ -31,8 +31,8 @@ set_exception_handler('exceptionHandler');
 
 
 /**
-* Helper, include a file and store it in a string. Make $vars available to the included file.
-*/
+ * Helper, include a file and store it in a string. Make $vars available to the included file.
+ */
 function getIncludeContents($filename, $vars=array()) {
   if (is_file($filename)) {
     ob_start();
@@ -45,32 +45,32 @@ function getIncludeContents($filename, $vars=array()) {
 
 
 /**
-* Helper, wrap html_entites with correct character encoding
-*/
+ * Helper, wrap html_entites with correct character encoding
+ */
 function htmlEnt($str, $flags = ENT_COMPAT) {
   return htmlentities($str, $flags, CBagdad::Instance()->config['character_encoding']);
 }
 
 
 /**
-* Helper, interval formatting of times. Needs PHP5.3.
-*
-* All times in database is UTC so this function assumes the starttime to be in UTC, if not otherwise
-* stated.
-*
-* Copied from http://php.net/manual/en/dateinterval.format.php#96768
-* Modified (mos) to use timezones.
-* A sweet interval formatting, will use the two biggest interval parts.
-* On small intervals, you get minutes and seconds.
-* On big intervals, you get months and days.
-* Only the two biggest parts are used.
-*
-* @param DateTime|string $start
-* @param DateTimeZone|string|null $startTimeZone
-* @param DateTime|string|null $end
-* @param DateTimeZone|string|null $endTimeZone
-* @return string
-*/
+ * Helper, interval formatting of times. Needs PHP5.3.
+ *
+ * All times in database is UTC so this function assumes the starttime to be in UTC, if not otherwise
+ * stated.
+ *
+ * Copied from http://php.net/manual/en/dateinterval.format.php#96768
+ * Modified (mos) to use timezones.
+ * A sweet interval formatting, will use the two biggest interval parts.
+ * On small intervals, you get minutes and seconds.
+ * On big intervals, you get months and days.
+ * Only the two biggest parts are used.
+ *
+ * @param DateTime|string $start
+ * @param DateTimeZone|string|null $startTimeZone
+ * @param DateTime|string|null $end
+ * @param DateTimeZone|string|null $endTimeZone
+ * @return string
+ */
 function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone=null) {
   if(!($start instanceof DateTime)) {
     if($startTimeZone instanceof DateTimeZone) {
@@ -145,8 +145,8 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
 
 
 /**
-* Helper, make clickable links from URLs in text.
-*/
+ * Helper, make clickable links from URLs in text.
+ */
 function makeClickable($text) {
   return preg_replace_callback(
     '#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#',
@@ -160,11 +160,11 @@ function makeClickable($text) {
 
 
 /**
-* Helper, BBCode formatting converting to HTML.
-*
-* @param string text The text to be converted.
-* @returns string the formatted text.
-*/
+ * Helper, BBCode formatting converting to HTML.
+ *
+ * @param string text The text to be converted.
+ * @returns string the formatted text.
+ */
 function bbcode2html($text) {
   $search = array(
     '/\[b\](.*?)\[\/b\]/is',

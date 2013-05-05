@@ -1,13 +1,13 @@
 <?php
 /**
-* Helpers for theming, available for all themes in their template files and functions.php.
-* This file is included right before the themes own functions.php
-*/
+ * Helpers for theming, available for all themes in their template files and functions.php.
+ * This file is included right before the themes own functions.php
+ */
  
 
 /**
-* Get list of tools.
-*/
+ * Get list of tools.
+ */
 function get_tools() {
   global $ba;
   return <<<EOD
@@ -40,8 +40,8 @@ EOD;
 
 
 /**
-* Print debuginformation from the framework.
-*/
+ * Print debuginformation from the framework.
+ */
 function get_debug() {
   // Only if debug is wanted.
   $ba = CBagdad::Instance();
@@ -79,8 +79,8 @@ function get_debug() {
 
 
 /**
-* Get messages stored in flash-session.
-*/
+ * Get messages stored in flash-session.
+ */
 function get_messages_from_session() {
   $messages = CBagdad::Instance()->session->GetMessages();
   $html = null;
@@ -96,8 +96,8 @@ function get_messages_from_session() {
 
 
 /**
-* Login menu. Creates a menu which reflects if user is logged in or not.
-*/
+ * Login menu. Creates a menu which reflects if user is logged in or not.
+ */
 function login_menu() {
   $ba = CBagdad::Instance();
   if($ba->user['isAuthenticated']) {
@@ -114,112 +114,112 @@ function login_menu() {
 
 
 /**
-* Get a gravatar based on the user's email.
-*/
+ * Get a gravatar based on the user's email.
+ */
 function get_gravatar($size=null) {
   return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim(CBagdad::Instance()->user['email']))) . '.jpg?r=pg&amp;d=wavatar&amp;' . ($size ? "s=$size" : null);
 }
 
 
 /**
-* Escape data to make it safe to write in the browser.
-*
-* @param $str string to escape.
-* @returns string the escaped string.
-*/
+ * Escape data to make it safe to write in the browser.
+ *
+ * @param $str string to escape.
+ * @returns string the escaped string.
+ */
 function esc($str) {
   return htmlEnt($str);
 }
 
 
 /**
-* Filter data according to a filter. Uses CMContent::Filter()
-*
-* @param $data string the data-string to filter.
-* @param $filter string the filter to use.
-* @returns string the filtered string.
-*/
+ * Filter data according to a filter. Uses CMContent::Filter()
+ *
+ * @param $data string the data-string to filter.
+ * @param $filter string the filter to use.
+ * @returns string the filtered string.
+ */
 function filter_data($data, $filter) {
   return CMContent::Filter($data, $filter);
 }
 
 
 /**
-* Display diff of time between now and a datetime.
-*
-* @param $start datetime|string
-* @returns string
-*/
+ * Display diff of time between now and a datetime.
+ *
+ * @param $start datetime|string
+ * @returns string
+ */
 function time_diff($start) {
   return formatDateTimeDiff($start);
 }
 
 
 /**
-* Prepend the base_url.
-*/
+ * Prepend the base_url.
+ */
 function base_url($url=null) {
   return CBagdad::Instance()->request->base_url . trim($url, '/');
 }
 
 
 /**
-* Create a url to an internal resource.
-*
-* @param string the whole url or the controller. Leave empty for current controller.
-* @param string the method when specifying controller as first argument, else leave empty.
-* @param string the extra arguments to the method, leave empty if not using method.
-*/
+ * Create a url to an internal resource.
+ *
+ * @param string the whole url or the controller. Leave empty for current controller.
+ * @param string the method when specifying controller as first argument, else leave empty.
+ * @param string the extra arguments to the method, leave empty if not using method.
+ */
 function create_url($urlOrController=null, $method=null, $arguments=null) {
   return CBagdad::Instance()->CreateUrl($urlOrController, $method, $arguments);
 }
 
 
 /**
-* Prepend the theme_url, which is the url to the current theme directory.
-*
-* @param $url string the url-part to prepend.
-* @returns string the absolute url.
-*/
+ * Prepend the theme_url, which is the url to the current theme directory.
+ *
+ * @param $url string the url-part to prepend.
+ * @returns string the absolute url.
+ */
 function theme_url($url) {
   return create_url(CBagdad::Instance()->themeUrl . "/{$url}");
 }
 
 
 /**
-* Prepend the theme_parent_url, which is the url to the parent theme directory.
-*
-* @param $url string the url-part to prepend.
-* @returns string the absolute url.
-*/
+ * Prepend the theme_parent_url, which is the url to the parent theme directory.
+ *
+ * @param $url string the url-part to prepend.
+ * @returns string the absolute url.
+ */
 function theme_parent_url($url) {
   return create_url(CBagdad::Instance()->themeParentUrl . "/{$url}");
 }
 
 
 /**
-* Return the current url.
-*/
+ * Return the current url.
+ */
 function current_url() {
   return CBagdad::Instance()->request->current_url;
 }
 
 
 /**
-* Render all views.
-*
-* @param $region string the region to draw the content in.
-*/
+ * Render all views.
+ *
+ * @param $region string the region to draw the content in.
+ */
 function render_views($region='default') {
   return CBagdad::Instance()->views->Render($region);
 }
 
 
 /**
-* Check if region has views. Accepts variable amount of arguments as regions.
-*
-* @param $region string the region to draw the content in.
-*/
+ * Check if region has views. Accepts variable amount of arguments as regions.
+ *
+ * @param $region string the region to draw the content in.
+ */
 function region_has_content($region='default' /*...*/) {
   return CBagdad::Instance()->views->RegionHasView(func_get_args());
 }

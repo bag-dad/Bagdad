@@ -1,20 +1,20 @@
 <?php
 /**
-* To manage and analyse all modules of Bagdad.
-*
-* @package BagdadCore
-*/
+ * To manage and analyse all modules of Bagdad.
+ *
+ * @package BagdadCore
+ */
 class CCModules extends CObject implements IController {
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct() { parent::__construct(); }
 
 
-  /**
-* Show a index-page and display what can be done through this controller.
-*/
+/**
+ * Show a index-page and display what can be done through this controller.
+ */
   public function Index() {
     $modules = new CMModules();
     $controllers = $modules->AvailableControllers();
@@ -25,9 +25,9 @@ class CCModules extends CObject implements IController {
   }
 
 
-  /**
-* Show a index-page and display what can be done through this controller.
-*/
+/**
+ * Show a index-page and display what can be done through this controller.
+ */
   public function Install() {
     $modules = new CMModules();
     $results = $modules->Install();

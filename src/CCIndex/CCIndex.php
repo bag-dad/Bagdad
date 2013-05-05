@@ -1,20 +1,20 @@
 <?php
 /**
-* Standard controller layout.
-*
-* @package BagdadCore
-*/
+ * Standard controller layout.
+ *
+ * @package BagdadCore
+ */
 class CCIndex extends CObject implements IController {
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct() { parent::__construct(); }
   
 
-  /**
-* Implementing interface IController. All controllers must have an index action.
-*/
+/**
+ * Implementing interface IController. All controllers must have an index action.
+ */
   public function Index() {	
     $modules = new CMModules();
     $controllers = $modules->AvailableControllers();

@@ -1,21 +1,21 @@
 <?php
 /**
-* A user controller to manage content.
-*
-* @package BagdadCore
-*/
+ * A user controller to manage content.
+ *
+ * @package BagdadCore
+ */
 class CCContent extends CObject implements IController {
 
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct() { parent::__construct(); }
 
 
-  /**
-* Show a listing of all content.
-*/
+/**
+ * Show a listing of all content.
+ */
   public function Index() {
     $content = new CMContent();
     $this->views->SetTitle('Content Controller')
@@ -25,11 +25,11 @@ class CCContent extends CObject implements IController {
   }
   
 
-  /**
-* Edit a selected content, or prepare to create new content if argument is missing.
-*
-* @param id integer the id of the content.
-*/
+/**
+ * Edit a selected content, or prepare to create new content if argument is missing.
+ *
+ * @param id integer the id of the content.
+ */
   public function Edit($id=null) {
     $content = new CMContent($id);
     $form = new CFormContent($content);
@@ -51,17 +51,17 @@ class CCContent extends CObject implements IController {
   }
   
 
-  /**
-* Create new content.
-*/
+/**
+ * Create new content.
+ */
   public function Create() {
     $this->Edit();
   }
 
 
-  /**
-* Init the content database.
-*/
+/**
+ * Init the content database.
+ */
   public function Init() {
     $content = new CMContent();
     $content->Init();

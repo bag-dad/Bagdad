@@ -1,19 +1,19 @@
 <?php
 /**
-* A form to manage content.
-*
-* @package LydiaCore
-*/
+ * A form to manage content.
+ *
+ * @package BagdadCore
+ */
 class CFormContent extends CForm {
 
-  /**
-* Properties
-*/
+/**
+ * Properties
+ */
   private $content;
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct($content) {
     parent::__construct();
     $this->content = $content;
@@ -32,9 +32,9 @@ class CFormContent extends CForm {
   }
   
 
-  /**
-* Callback to save the form content to database.
-*/
+/**
+ * Callback to save the form content to database.
+ */
   public function DoSave($form, $content) {
     $content['id'] = $form['id']['value'];
     $content['title'] = $form['title']['value'];
@@ -46,9 +46,9 @@ class CFormContent extends CForm {
   }
   
   
-  /**
-* Callback to delete the content.
-*/
+/**
+ * Callback to delete the content.
+ */
   public function DoDelete($form, $content) {
     $content['id'] = $form['id']['value'];
     $content->Delete();

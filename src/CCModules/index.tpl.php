@@ -8,7 +8,7 @@ has its own subdirectory in the <code>src</code>-directory.</p>
 
 <h2>Manage Bagdad modules</h2>
 <p>A module can implement the interface <code>IModule</code>
-which makes it a manageable module. Bagdad provides a administrating interface for these
+which makes it a manageable module. Bagdad provides an administrating interface for these
 modules. You can perform the following actions through this interface:</p>
 
 <ul>

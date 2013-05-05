@@ -1,20 +1,20 @@
 <?php
 /**
-* A model for an authenticated user.
-*
-* @package LydiaCore
-*/
+ * A model for an authenticated user.
+ *
+ * @package BagdadCore
+ */
 class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
 
-  /**
-* Properties
-*/
+/**
+ * Properties
+ */
   public $profile;
 
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct($ba=null) {
     parent::__construct($ba);
     $profile = $this->session->GetAuthenticatedUser();
@@ -27,20 +27,20 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
 
 
-  /**
-* Implementing ArrayAccess for $this->profile
-*/
+/**
+ * Implementing ArrayAccess for $this->profile
+ */
   public function offsetSet($offset, $value) { if (is_null($offset)) { $this->profile[] = $value; } else { $this->profile[$offset] = $value; }}
   public function offsetExists($offset) { return isset($this->profile[$offset]); }
   public function offsetUnset($offset) { unset($this->profile[$offset]); }
   public function offsetGet($offset) { return isset($this->profile[$offset]) ? $this->profile[$offset] : null; }
 
 
-  /**
-* Implementing interface IModule. Manage install/update/deinstall and equal actions.
-*
-* @param string $action what to do.
-*/
+/**
+ * Implementing interface IModule. Manage install/update/deinstall and equal actions.
+ *
+ * @param string $action what to do.
+ */
   public function Manage($action=null) {
     switch($action) {
       case 'install':
@@ -78,11 +78,11 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
       
-  /**
-* Implementing interface IHasSQL. Encapsulate all SQL used by this class.
-*
-* @param string $key the string that is the key of the wanted SQL-entry in the array.
-*/
+/**
+ * Implementing interface IHasSQL. Encapsulate all SQL used by this class.
+ *
+ * @param string $key the string that is the key of the wanted SQL-entry in the array.
+ */
   public static function SQL($key=null) {
     $queries = array(
       'drop table user' => "DROP TABLE IF EXISTS User;",
@@ -106,15 +106,15 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
 
 
-  /**
-* Login by autenticate the user and password. Store user information in session if success.
-*
-* Set both session and internal properties.
-*
-* @param string $acronymOrEmail the emailadress or user acronym.
-* @param string $password the password that should match the acronym or email-adress.
-* @returns booelan true if match else false.
-*/
+/**
+ * Login by autenticating the user and password. Store user information in session if success.
+ *
+ * Set both session and internal properties.
+ *
+ * @param string $acronymOrEmail the emailadress or user acronym.
+ * @param string $password the password that should match the acronym or email-adress.
+ * @returns booelan true if match else false.
+ */
   public function Login($acronymOrEmail, $password) {
     $user = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check user password'), array($acronymOrEmail, $acronymOrEmail));
     $user = (isset($user[0])) ? $user[0] : null;
@@ -144,9 +144,9 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
 
-  /**
-* Logout. Clear both session and internal properties.
-*/
+/**
+ * Logout. Clear both session and internal properties.
+ */
   public function Logout() {
     $this->session->UnsetAuthenticatedUser();
     $this->profile = array();
@@ -154,15 +154,15 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
 
-  /**
-* Create new user.
-*
-* @param $acronym string the acronym.
-* @param $password string the password plain text to use as base.
-* @param $name string the user full name.
-* @param $email string the user email.
-* @returns boolean true if user was created or else false and sets failure message in session.
-*/
+/**
+ * Create new user.
+ *
+ * @param $acronym string the acronym.
+ * @param $password string the password plain text to use as base.
+ * @param $name string the user full name.
+ * @param $email string the user email.
+ * @returns boolean true if user was created or else false and sets failure message in session.
+ */
   public function Create($acronym, $password, $name, $email) {
     $pwd = $this->CreatePassword($password);
     $this->db->ExecuteQuery(self::SQL('insert into user'), array($acronym, $name, $email, $pwd['algorithm'], $pwd['salt'], $pwd['password']));
@@ -174,14 +174,14 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
 
-  /**
-* Create password.
-*
-* @param $plain string the password plain text to use as base.
-* @param $algorithm string stating what algorithm to use, plain, md5, md5salt, sha1, sha1salt.
-* defaults to the settings of site/config.php.
-* @returns array with 'salt' and 'password'.
-*/
+/**
+ * Create password.
+ *
+ * @param $plain string the password plain text to use as base.
+ * @param $algorithm string stating what algorithm to use, plain, md5, md5salt, sha1, sha1salt.
+ * defaults to the settings of site/config.php.
+ * @returns array with 'salt' and 'password'.
+ */
   public function CreatePassword($plain, $algorithm=null) {
     $password = array(
       'algorithm'=>($algorithm ? $algoritm : CBagdad::Instance()->config['hashing_algorithm']),
@@ -199,15 +199,15 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
 
-  /**
-* Check if password matches.
-*
-* @param $plain string the password plain text to use as base.
-* @param $algorithm string the algorithm mused to hash the user salt/password.
-* @param $salt string the user salted string to use to hash the password.
-* @param $password string the hashed user password that should match.
-* @returns boolean true if match, else false.
-*/
+/**
+ * Check if password matches.
+ *
+ * @param $plain string the password plain text to use as base.
+ * @param $algorithm string the algorithm mused to hash the user salt/password.
+ * @param $salt string the user salted string to use to hash the password.
+ * @param $password string the hashed user password that should match.
+ * @returns boolean true if match, else false.
+ */
   public function CheckPassword($plain, $algorithm, $salt, $password) {
     switch($algorithm) {
       case 'sha1salt': return $password === sha1($salt.$plain); break;
@@ -220,11 +220,11 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
 
-  /**
-* Save user profile to database and update user profile in session.
-*
-* @returns boolean true if success else false.
-*/
+/**
+ * Save user profile to database and update user profile in session.
+ *
+ * @returns boolean true if success else false.
+ */
   public function Save() {
     $this->db->ExecuteQuery(self::SQL('update profile'), array($this['name'], $this['email'], $this['id']));
     $this->session->SetAuthenticatedUser($this->profile);
@@ -232,12 +232,12 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
   
-  /**
-* Change user password.
-*
-* @param $plain string plaintext of the new password
-* @returns boolean true if success else false.
-*/
+/**
+ * Change user password.
+ *
+ * @param $plain string plaintext of the new password
+ * @returns boolean true if success else false.
+ */
   public function ChangePassword($plain) {
     $password = $this->CreatePassword($plain);
     $this->db->ExecuteQuery(self::SQL('update password'), array($password['algoritm'], $password['salt'], $password['password'], $this['id']));

@@ -1,9 +1,9 @@
 <?php
-//
-// A guestbook controller as an example to show off some basic controller and model-stuff.
-//
-// @package BagdadCore
-//
+/**
+ * A guestbook controller as an example to show off some basic controller and model-stuff.
+ *
+ * @package BagdadCore
+ */
 class CCGuestbook extends CObject implements IController {
 
   private $guestbookModel;
@@ -23,7 +23,7 @@ class CCGuestbook extends CObject implements IController {
 // Show a standard frontpage for the guestbook.
 //
   public function Index() {
-    $this->views->SetTitle('Bagdad Guestbook Example');
+    $this->views->SetTitle('Guestbook Example');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
       'entries'=>$this->guestbookModel->ReadAll(),
       'form_action'=>$this->request->CreateUrl('', 'handler')

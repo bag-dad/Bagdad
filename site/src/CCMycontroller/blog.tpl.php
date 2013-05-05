@@ -1,5 +1,5 @@
 <h1>Blog</h1>
-<p>All nice news and blogposts about me.</p>
+<p>Blogposts here.</p>
 
 <?php if($contents != null):?>
   <?php foreach($contents as $val):?>

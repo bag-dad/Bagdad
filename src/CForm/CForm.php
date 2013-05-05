@@ -1,24 +1,24 @@
 <?php
 /**
-* A utility class to easy creating and handling of forms
-*
-* @package LydiaCore
-*/
+ * A utility class to easy creating and handling of forms
+ *
+ * @package BagdadCore
+ */
 class CFormElement implements ArrayAccess{
 
-  /**
-* Properties
-*/
+/**
+ * Properties
+ */
   public $attributes;
   public $characterEncoding;
   
 
-  /**
-* Constructor
-*
-* @param string name of the element.
-* @param array attributes to set to the element. Default is an empty array.
-*/
+/**
+ * Constructor
+ *
+ * @param string name of the element.
+ * @param array attributes to set to the element. Default is an empty array.
+ */
   public function __construct($name, $attributes=array()) {
     $this->attributes = $attributes;
     $this['name'] = $name;
@@ -30,20 +30,20 @@ class CFormElement implements ArrayAccess{
   }
   
   
-  /**
-* Implementing ArrayAccess for this->attributes
-*/
+/**
+ * Implementing ArrayAccess for this->attributes
+ */
   public function offsetSet($offset, $value) { if (is_null($offset)) { $this->attributes[] = $value; } else { $this->attributes[$offset] = $value; }}
   public function offsetExists($offset) { return isset($this->attributes[$offset]); }
   public function offsetUnset($offset) { unset($this->attributes[$offset]); }
   public function offsetGet($offset) { return isset($this->attributes[$offset]) ? $this->attributes[$offset] : null; }
 
 
-  /**
-* Get HTML code for a element.
-*
-* @returns HTML code for the element.
-*/
+/**
+ * Get HTML code for a element.
+ *
+ * @returns HTML code for the element.
+ */
   public function GetHTML() {
     $id = isset($this['id']) ? $this['id'] : 'form-element-' . $this['name'];
     $class = isset($this['class']) ? " {$this['class']}" : null;
@@ -78,12 +78,12 @@ class CFormElement implements ArrayAccess{
   }
 
 
-  /**
-* Validate the form element value according a ruleset.
-*
-* @param $rules array of validation rules.
-* returns boolean true if all rules pass, else false.
-*/
+/**
+ * Validate the form element value according a ruleset.
+ *
+ * @param $rules array of validation rules.
+ * returns boolean true if all rules pass, else false.
+ */
   public function Validate($rules) {
     $tests = array(
       'fail' => array('message' => 'Will always fail.', 'test' => 'return false;'),
@@ -106,9 +106,9 @@ class CFormElement implements ArrayAccess{
   }
 
 
-  /**
-* Use the element name as label if label is not set.
-*/
+/**
+ * Use the element name as label if label is not set.
+ */
   public function UseNameAsDefaultLabel() {
     if(!isset($this['label'])) {
       $this['label'] = ucfirst(strtolower(str_replace(array('-','_'), ' ', $this['name']))).':';
@@ -116,9 +116,9 @@ class CFormElement implements ArrayAccess{
   }
 
 
-  /**
-* Use the element name as value if value is not set.
-*/
+/**
+ * Use the element name as value if value is not set.
+ */
   public function UseNameAsDefaultValue() {
     if(!isset($this['value'])) {
       $this['value'] = ucfirst(strtolower(str_replace(array('-','_'), ' ', $this['name'])));
@@ -130,12 +130,12 @@ class CFormElement implements ArrayAccess{
 
 
 class CFormElementText extends CFormElement {
-  /**
-* Constructor
-*
-* @param string name of the element.
-* @param array attributes to set to the element. Default is an empty array.
-*/
+/**
+ * Constructor
+ *
+ * @param string name of the element.
+ * @param array attributes to set to the element. Default is an empty array.
+ */
   public function __construct($name, $attributes=array()) {
     parent::__construct($name, $attributes);
     $this['type'] = 'text';
@@ -145,12 +145,12 @@ class CFormElementText extends CFormElement {
 
 
 class CFormElementTextarea extends CFormElement {
-  /**
-* Constructor
-*
-* @param string name of the element.
-* @param array attributes to set to the element. Default is an empty array.
-*/
+/**
+ * Constructor
+ *
+ * @param string name of the element.
+ * @param array attributes to set to the element. Default is an empty array.
+ */
   public function __construct($name, $attributes=array()) {
     parent::__construct($name, $attributes);
     $this['type'] = 'textarea';
@@ -160,12 +160,12 @@ class CFormElementTextarea extends CFormElement {
 
 
 class CFormElementHidden extends CFormElement {
-  /**
-* Constructor
-*
-* @param string name of the element.
-* @param array attributes to set to the element. Default is an empty array.
-*/
+/**
+ * Constructor
+ *
+ * @param string name of the element.
+ * @param array attributes to set to the element. Default is an empty array.
+ */
   public function __construct($name, $attributes=array()) {
     parent::__construct($name, $attributes);
     $this['type'] = 'hidden';
@@ -174,12 +174,12 @@ class CFormElementHidden extends CFormElement {
 
 
 class CFormElementPassword extends CFormElement {
-  /**
-* Constructor
-*
-* @param string name of the element.
-* @param array attributes to set to the element. Default is an empty array.
-*/
+/**
+ * Constructor
+ *
+ * @param string name of the element.
+ * @param array attributes to set to the element. Default is an empty array.
+ */
   public function __construct($name, $attributes=array()) {
     parent::__construct($name, $attributes);
     $this['type'] = 'password';
@@ -189,12 +189,12 @@ class CFormElementPassword extends CFormElement {
 
 
 class CFormElementSubmit extends CFormElement {
-  /**
-* Constructor
-*
-* @param string name of the element.
-* @param array attributes to set to the element. Default is an empty array.
-*/
+/**
+ * Constructor
+ *
+ * @param string name of the element.
+ * @param array attributes to set to the element. Default is an empty array.
+ */
   public function __construct($name, $attributes=array()) {
     parent::__construct($name, $attributes);
     $this['type'] = 'submit';
@@ -205,62 +205,62 @@ class CFormElementSubmit extends CFormElement {
 
 class CForm implements ArrayAccess {
 
-  /**
-* Properties
-*/
+/**
+ * Properties
+ */
   public $form; // array with settings for the form
   public $elements; // array with all form elements
   
 
-  /**
-* Constructor
-*/
+/**
+ * Constructor
+ */
   public function __construct($form=array(), $elements=array()) {
     $this->form = $form;
     $this->elements = $elements;
   }
 
 
-  /**
-* Implementing ArrayAccess for this->elements
-*/
+/**
+ * Implementing ArrayAccess for this->elements
+ */
   public function offsetSet($offset, $value) { if (is_null($offset)) { $this->elements[] = $value; } else { $this->elements[$offset] = $value; }}
   public function offsetExists($offset) { return isset($this->elements[$offset]); }
   public function offsetUnset($offset) { unset($this->elements[$offset]); }
   public function offsetGet($offset) { return isset($this->elements[$offset]) ? $this->elements[$offset] : null; }
 
 
-  /**
-* Add a form element
-*
-* @param $element CFormElement the formelement to add.
-* @returns $this CForm
-*/
+/**
+ * Add a form element
+ *
+ * @param $element CFormElement the formelement to add.
+ * @returns $this CForm
+ */
   public function AddElement($element) {
     $this[$element['name']] = $element;
     return $this;
   }
   
 
-  /**
-* Set validation to a form element
-*
-* @param $element string the name of the formelement to add validation rules to.
-* @param $rules array of validation rules.
-* @returns $this CForm
-*/
+/**
+ * Set validation to a form element
+ *
+ * @param $element string the name of the formelement to add validation rules to.
+ * @param $rules array of validation rules.
+ * @returns $this CForm
+ */
   public function SetValidation($element, $rules) {
     $this[$element]['validation'] = $rules;
     return $this;
   }
   
 
-  /**
-* Return HTML for the form or the formdefinition.
-*
-* @param $attributes array with attributes affecting the form output.
-* @returns string with HTML for the form.
-*/
+/**
+ * Return HTML for the form or the formdefinition.
+ *
+ * @param $attributes array with attributes affecting the form output.
+ * @returns string with HTML for the form.
+ */
   public function GetHTML($attributes=null) {
     if(is_array($attributes)) {
       $this->form = array_merge($this->form, $attributes);
@@ -287,9 +287,9 @@ EOD;
   }
  
 
-  /**
-* Return HTML for the elements
-*/
+/**
+ * Return HTML for the elements
+ */
   public function GetHTMLForElements() {
     $html = null;
     $buttonbar = null;
@@ -308,14 +308,14 @@ EOD;
   }
   
 
-  /**
-* Check if a form was submitted and perform validation and call callbacks.
-*
-* The form is stored in the session if validation or callback fails. The page should then be redirected
-* to the original form page, the form will populate from the session and should be rendered again.
-*
-* @returns boolean true if submitted&validates and callbacks are successfull, false if not validate or callback fails, null if not submitted.
-*/
+/**
+ * Check if a form was submitted and perform validation and call callbacks.
+ *
+ * The form is stored in the session if validation or callback fails. The page should then be redirected
+ * to the original form page, the form will populate from the session and should be rendered again.
+ *
+ * @returns boolean true if submitted&validates and callbacks are successfull, false if not validate or callback fails, null if not submitted.
+ */
   public function Check() {
     $validates = null;
     $callbackStatus = null;

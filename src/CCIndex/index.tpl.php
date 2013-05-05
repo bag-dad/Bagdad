@@ -1,5 +1,5 @@
 <h1>Index Controller</h1>
-<p>Welcome to Bagdad index controller.</p>
+<p>Welcome to the index controller.</p>
 
 <h2>Download</h2>
 <p>You can download Bagdad from github.</p>

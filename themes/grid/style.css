@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Serif);
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin:0;
   padding:0;
@@ -28,6 +30,7 @@ audio:not([controls]) { display:none; }
 body {
   width:100%;
   *zoom:1;
+  
 }
 body:before, body:after {
   content:"";
@@ -36,21 +39,19 @@ body:before, body:after {
 body:after { clear:both; }
 body {
   color:#222222;
-  font:100.01% / 1.375 Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:100.01% / 1.375 Frutiger, "Noto Serif", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1 {
   font-weight:normal;
-  color:#111111;
+  color:#e8e8e8;
   margin-bottom:22px;
   font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
   font-size:2.375em;
   line-height:1.1579;
-  border-bottom:1px solid #cccccc;
-  margin-bottom:21px;
 }
 h2 {
   font-weight:normal;
-  color:#111111;
+  color:#e8e8e8;
   margin-bottom:22px;
   font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
   font-size:1.875em;
@@ -58,7 +59,7 @@ h2 {
 }
 h3 {
   font-weight:normal;
-  color:#111111;
+  color:#e8e8e8;
   margin-bottom:22px;
   font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
   font-size:1.375em;
@@ -66,7 +67,7 @@ h3 {
 }
 h4 {
   font-weight:normal;
-  color:#111111;
+  color:#e8e8e8;
   margin-bottom:22px;
   font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
   font-size:1.25em;
@@ -74,7 +75,7 @@ h4 {
 }
 h5 {
   font-weight:normal;
-  color:#111111;
+  color:#e8e8e8;
   margin-bottom:22px;
   font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
   font-size:1em;
@@ -82,7 +83,7 @@ h5 {
 }
 h6 {
   font-weight:normal;
-  color:#111111;
+  color:#e8e8e8;
   margin-bottom:22px;
   font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
   font-size:1em;
@@ -165,11 +166,13 @@ body {
   margin:0;
   padding:0;
   color:#333333;
-  background-color:#ffffff;
+  background-color:#3F8FD2;
+  
 }
 #outer-wrap-header {
   padding-top:11px;
-  margin-bottom:11px;
+  margin-bottom:0px;
+  background-color:#0B5FA5;
 }
 #inner-wrap-header {
   width:960px;
@@ -184,8 +187,8 @@ body {
 #header {
   display:inline;
   float:left;
-  width:940px;
-  margin:0 10px;
+  width:960px;
+  margin:0 0px;
 }
 #login-menu {
   float:right;
@@ -207,9 +210,8 @@ body {
   display:table-cell;
   vertical-align:middle;
   text-align:center;
-  font-size:2.5em;
+  font-size:4em;
   padding-left:0.2em;
-  text-shadow:#cccccc 2px -2px 2px;
 }
 #banner #site-title a { text-decoration:none; }
 #banner #site-slogan {
@@ -223,6 +225,7 @@ body {
   list-style-type:none;
   padding:2px 8px;
   margin:0;
+  background-color:#e8e8e8;
 }
 #navbar ul.menu li {
   padding:0;
@@ -235,7 +238,7 @@ body {
   border:2px solid transparent;
 }
 #navbar ul.menu li a:hover {
-  background:#dddddd;
+  background:#e8e8e8;
   border:2px solid #999999;
 }
 #navbar ul.menu li a.selected {
@@ -284,7 +287,8 @@ body {
   width:960px;
   margin:0 auto;
   *zoom:1;
-  margin-bottom:22px;
+  margin-bottom:0px;
+  background-color:#66A1D2;
 }
 #inner-wrap-main:before, #inner-wrap-main:after {
   content:"";
@@ -294,18 +298,20 @@ body {
 #primary {
   display:inline;
   float:left;
-  width:620px;
+  width:636px;
   margin:0 10px;
+  
 }
 #sidebar {
   display:inline;
   float:left;
   width:300px;
-  margin:0 10px;
+  margin:0 2px;
+  background-color:#e8e8e8;
+  border:0px;
 }
 #sidebar .box {
-  border-top:4px double #cccccc;
-  padding-top:11px;
+  padding:11px;
   margin-bottom:51px;
 }
 #inner-wrap-triptych {
@@ -348,11 +354,10 @@ body {
   margin:0 10px;
   margin-top:1em;
   height:100%;
-  background-color:rgba(255,255,255,0.5);
+  background-color:25547B;
 }
 #outer-wrap-footer {
-  background-color:#eeeeee;
-  border-top:1px solid #bbbbbb;
+  background-color:#25547B;
 }
 #inner-wrap-footer {
   width:960px;
@@ -371,12 +376,12 @@ body {
   float:left;
   width:940px;
   margin:0 10px;
-  color:#666666;
+  color:#fff;
 }
 a { color:inherit; }
 a:hover {
   text-decoration:none;
-  color:#5c0a0a;
+  color:#8cb300;
 }
 a:focus {
   text-decoration:none;
@@ -413,3 +418,7 @@ a:focus {
 .info a { color:#205791; }
 .smaller-text { font-size:smaller; }
 .silent { color:#999999; }
+
+::-moz-selection {
+	background: #d6e2ff /* Firefox */
+}
